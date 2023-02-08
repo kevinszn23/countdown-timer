@@ -2,14 +2,17 @@ import {useState, useEffect} from "react"
 
 export default function Form(props) {
 
-    const initForm = {
-        name: "",
-        date: "",
-        time: "",
-    }
+    // const initForm = {
+    //     name: "",
+    //     date: "",
+    //     time: "",
+    // }
 
-    const [newEvent, setNewEvent] = useState(initForm);
+    // const [newEvent, setNewEvent] = useState(initForm);
 
+    // useEffect(() => {
+    //     getListing(setListing);
+    //   }, []);
 
   return (
     <form>
