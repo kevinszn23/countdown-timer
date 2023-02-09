@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 
 export default function Form(props) {
   const [name, setName] = useState("");
-  const [date, setDate] = useState(new Date());
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  const [inputDate, setInputDate] = useState("");
-
+  const [inputDate, setInputDate] = useState("Jan 1, 2023");
+  const [date, setDate] = useState(inputDate);
+  
   useEffect(() => {
     startTimer();
   }, []);
@@ -17,10 +17,10 @@ export default function Form(props) {
   let interval;
 
   const startTimer = () => {
-    const countDownDate = new Date("February 14,2023").getTime();
+    const countDownDate = new Date("February 14, 2023")
     interval = setInterval(() => {
-      const now = new Date().getTime();
-      const count = countDownDate - now;
+      const now = new Date()
+      const count = (countDownDate - now) / 1000
 
       const timerDays = Math.floor(count / (24 * 60 * 60 * 1000));
       const timerHours = Math.floor(
@@ -39,12 +39,12 @@ export default function Form(props) {
       }
     });
   };
-
   return (
     <div>
       <form
         onSubmit={() => {
           setDate(inputDate);
+        //   console.log(date);
         }}
       >
         <label>
@@ -64,7 +64,7 @@ export default function Form(props) {
             type="text"
             required
             name="date"
-            value={date}
+            value={inputDate}
             onChange={(e) => {
               setInputDate(e.target.value);
             }}
@@ -77,6 +77,7 @@ export default function Form(props) {
           <p>{hours} hours</p>
           <p>{minutes} minutes</p>
           <p>{seconds} seconds</p>
+          <p>{date}</p>
         </div>
       </form>
     </div>
