@@ -3,13 +3,12 @@ import { useState, useEffect } from "react";
 
 export default function Form(props) {
   const [name, setName] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(new Date());
   const [days, setDays] = useState(0);
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [inputDate, setInputDate] = useState(new Date());
+  const [inputDate, setInputDate] = useState("");
 
   useEffect(() => {
     startTimer();
@@ -45,7 +44,7 @@ export default function Form(props) {
     <div>
       <form
         onSubmit={() => {
-          setDate(date);
+          setDate(inputDate);
         }}
       >
         <label>
@@ -67,7 +66,7 @@ export default function Form(props) {
             name="date"
             value={date}
             onChange={(e) => {
-              setDate(e.target.value);
+              setInputDate(e.target.value);
             }}
           />
         </label>
