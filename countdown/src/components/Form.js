@@ -7,20 +7,20 @@ export default function Form(props) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  const [inputDate, setInputDate] = useState("Jan 1, 2023");
+  const [inputDate, setInputDate] = useState("January 1, 2023");
   const [date, setDate] = useState(inputDate);
+  let interval;
   
   useEffect(() => {
     startTimer();
-  }, []);
+  }, [date]);
 
-  let interval;
 
   const startTimer = () => {
-    const countDownDate = new Date("February 14, 2023")
+    const countDownDate = new Date(date).getTime();
     interval = setInterval(() => {
-      const now = new Date()
-      const count = (countDownDate - now) / 1000
+      const now = new Date().getTime();
+      const count = countDownDate - now
 
       const timerDays = Math.floor(count / (24 * 60 * 60 * 1000));
       const timerHours = Math.floor(
@@ -42,7 +42,9 @@ export default function Form(props) {
   return (
     <div>
       <form
-        onSubmit={() => {
+        onSubmit={(e) => {
+          e.preventDefault();
+          clearInterval(interval);
           setDate(inputDate);
         //   console.log(date);
         }}
