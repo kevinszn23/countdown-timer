@@ -55,7 +55,7 @@
 }
 
 .timer-class {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,4 +82,16 @@
 .timer-event {
   display: flex;
   flex-direction: column;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.timer-name {
+  /* border: 1px solid green; */
+  padding: 5px;
+}
+
+.timer-date {
+  /* border: 1px solid green; */
+  padding: 5px;
 }
