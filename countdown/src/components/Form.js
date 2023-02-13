@@ -10,17 +10,16 @@ export default function Form(props) {
   const [inputDate, setInputDate] = useState("January 1, 2023");
   const [date, setDate] = useState(inputDate);
   let interval;
-  
+
   useEffect(() => {
     startTimer();
   }, [date]);
-
 
   const startTimer = () => {
     const countDownDate = new Date(date).getTime();
     interval = setInterval(() => {
       const now = new Date().getTime();
-      const count = countDownDate - now
+      const count = countDownDate - now;
 
       const timerDays = Math.floor(count / (24 * 60 * 60 * 1000));
       const timerHours = Math.floor(
@@ -46,18 +45,25 @@ export default function Form(props) {
           e.preventDefault();
           clearInterval(interval);
           setDate(inputDate);
-        //   console.log(date);
+          //   console.log(date);
         }}
       >
-
         <div className="timer-class">
-          <p>{days} <span className="timer-span">days</span></p>
-          <p>{hours} <span className="timer-span">hours</span></p>
-          <p>{minutes} <span className="timer-span">minutes</span></p>
-          <p>{seconds} <span className="timer-span">seconds</span></p>
+          <p>
+            {days} <span className="timer-span">days</span>
+          </p>
+          <p>
+            {hours} <span className="timer-span">hours</span>
+          </p>
+          <p>
+            {minutes} <span className="timer-span">minutes</span>
+          </p>
+          <p>
+            {seconds} <span className="timer-span">seconds</span>
+          </p>
         </div>
         <div className="timer-event">
-          <p>{name === "" ? name : `Until ${name}`}</p>
+          <p>{date === "January 1, 2023" ? "" : `Until ${name}`}</p>
         </div>
         <label>
           <span className="timer-name">Name</span>
@@ -82,7 +88,7 @@ export default function Form(props) {
             }}
           />
         </label>
-        <input type="Submit" value="Submit" className="timer-submit"/>
+        <input type="Submit" value="Submit" className="timer-submit" />
       </form>
     </div>
   );
