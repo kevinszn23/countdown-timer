@@ -1,3 +1,11 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +43,43 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.body {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  max-width: 100%;
+  height: 100vh;
+}
+
+.timer-class {
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-class > p {
+  font-size: 45px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+/* .timer-class > span {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid blue;
+} */
+
+.timer-span {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.timer-event {
+  display: flex;
+  flex-direction: column;
 }

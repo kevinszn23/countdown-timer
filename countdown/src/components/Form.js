@@ -40,7 +40,7 @@ export default function Form(props) {
     });
   };
   return (
-    <div>
+    <div className="body">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -74,12 +74,12 @@ export default function Form(props) {
         </label>
         <input type="submit" value="submit" />
 
-        <div>
-          <p>{days} days</p>
-          <p>{hours} hours</p>
-          <p>{minutes} minutes</p>
-          <p>{seconds} seconds</p>
-          <p>{name === "" ? name : `Until ${name}`}</p>
+        <div className="timer-class">
+          <p>{days} <span className="timer-span">days</span></p>
+          <p>{hours} <span className="timer-span">hours</span></p>
+          <p>{minutes} <span className="timer-span">minutes</span></p>
+          <p>{seconds} <span className="timer-span">seconds</span></p>
+          <p className="timer-event">{name === "" ? name : `Until ${name}`}</p>
         </div>
       </form>
     </div>
