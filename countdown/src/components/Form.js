@@ -79,7 +79,7 @@ export default function Form(props) {
           <p>{hours} hours</p>
           <p>{minutes} minutes</p>
           <p>{seconds} seconds</p>
-          <p>{date}</p>
+          <p>{name === "" ? name : `Until ${name}`}</p>
         </div>
       </form>
     </div>
