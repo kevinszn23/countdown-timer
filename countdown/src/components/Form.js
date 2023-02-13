@@ -49,6 +49,16 @@ export default function Form(props) {
         //   console.log(date);
         }}
       >
+
+        <div className="timer-class">
+          <p>{days} <span className="timer-span">days</span></p>
+          <p>{hours} <span className="timer-span">hours</span></p>
+          <p>{minutes} <span className="timer-span">minutes</span></p>
+          <p>{seconds} <span className="timer-span">seconds</span></p>
+        </div>
+        <div className="timer-event">
+          <p>{name === "" ? name : `Until ${name}`}</p>
+        </div>
         <label>
           <span className="timer-name">Name</span>
           <input
@@ -72,17 +82,7 @@ export default function Form(props) {
             }}
           />
         </label>
-        <input type="Submit" value="Submit" />
-
-        <div className="timer-class">
-          <p>{days} <span className="timer-span">days</span></p>
-          <p>{hours} <span className="timer-span">hours</span></p>
-          <p>{minutes} <span className="timer-span">minutes</span></p>
-          <p>{seconds} <span className="timer-span">seconds</span></p>
-        </div>
-        <div className="timer-event">
-          <p>{name === "" ? name : `Until ${name}`}</p>
-        </div>
+        <input type="Submit" value="Submit" className="timer-submit"/>
       </form>
     </div>
   );

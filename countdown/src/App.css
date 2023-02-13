@@ -52,6 +52,9 @@
   margin: auto;
   max-width: 100%;
   height: 100vh;
+  background-color: purple;
+  background: linear-gradient(0.75turn, purple, black);
+
 }
 
 .timer-class {
@@ -65,18 +68,14 @@
   font-size: 45px;
   font-weight: bold;
   padding: 10px;
+  /* border: 1px solid gray; */
 }
-
-/* .timer-class > span {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid blue;
-} */
 
 .timer-span {
   display: flex;
   flex-direction: column;
   font-size: 20px;
+  /* border: 1px solid brown; */
 }
 
 .timer-event {
@@ -84,6 +83,7 @@
   flex-direction: column;
   font-weight: bold;
   font-size: 25px;
+  /* border: 1px solid blueviolet; */
 }
 
 .timer-name {
@@ -94,4 +94,19 @@
 .timer-date {
   /* border: 1px solid green; */
   padding: 5px;
+}
+
+.timer-submit {
+  /* border: 1px solid red; */
+  margin: 5px;
+}
+
+form {
+  /* border: 2px solid red; */
+  background-color: green;
+  color: white;
+  background: linear-gradient(0.25turn, purple, black);
+  border-radius: 5px;
+  border: 2px solid white;
+  box-shadow: 5px 5px darkgray;
 }
