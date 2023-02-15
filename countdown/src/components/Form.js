@@ -13,6 +13,11 @@ export default function Form(props) {
   let interval;
 
   useEffect(() => {
+    clearInterval(interval);
+    setDays(0);
+    setHours(0);
+    setMinutes(0);
+    setSeconds(0);
     startTimer();
   }, [date]);
 
@@ -29,6 +34,11 @@ export default function Form(props) {
       const timerMinutes = Math.floor((count % (60 * 60 * 1000)) / (1000 * 60));
       const timerSeconds = Math.floor((count % (60 * 1000)) / 1000);
 
+
+      if (countDownDate !== new Date(date).getTime()) {
+        clearInterval(interval)
+      }
+
       if (count < 0) {
         clearInterval(interval);
       } else {
@@ -44,7 +54,7 @@ export default function Form(props) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          clearInterval(interval);
+        //   clearInterval(interval);
           setDate(inputDate + (inputTime === "" ? inputTime : "T" + inputTime) );
         }}
       >
