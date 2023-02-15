@@ -9,7 +9,6 @@ export default function Form(props) {
   const [seconds, setSeconds] = useState(0);
   const [inputDate, setInputDate] = useState("January 1, 2023");
   const [date, setDate] = useState(inputDate);
-  const [time, setTime] = useState("");
   const [inputTime, setInputTime] = useState("");
   let interval;
 
@@ -46,8 +45,7 @@ export default function Form(props) {
         onSubmit={(e) => {
           e.preventDefault();
           clearInterval(interval);
-          setDate(inputDate);
-          //   console.log(date);
+          setDate(inputDate + (inputTime === "" ? inputTime : "T" + inputTime) );
         }}
       >
         <div className="timer-class">
@@ -94,6 +92,10 @@ export default function Form(props) {
           <input
           type="time"
           name="time"
+          value={inputTime}
+          onChange={(e) => {
+            setInputTime(e.target.value);
+          }}
           />
 
         </label>
