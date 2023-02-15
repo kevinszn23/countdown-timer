@@ -9,6 +9,8 @@ export default function Form(props) {
   const [seconds, setSeconds] = useState(0);
   const [inputDate, setInputDate] = useState("January 1, 2023");
   const [date, setDate] = useState(inputDate);
+  const [time, setTime] = useState("");
+  const [inputTime, setInputTime] = useState("");
   let interval;
 
   useEffect(() => {
@@ -79,7 +81,7 @@ export default function Form(props) {
 
           <span className="timer-date">Date</span>
           <input
-            type="text"
+            type="date"
             required
             name="date"
             value={inputDate}
@@ -87,6 +89,13 @@ export default function Form(props) {
               setInputDate(e.target.value);
             }}
           />
+
+          <span>Time</span>
+          <input
+          type="time"
+          name="time"
+          />
+
         </label>
         <input type="Submit" value="Submit" className="timer-submit" />
       </form>
