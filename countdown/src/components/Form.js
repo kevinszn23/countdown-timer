@@ -110,6 +110,7 @@ export default function Form(props) {
 
         </label>
         <input type="Submit" value="Submit" className="timer-submit" />
+        <input type="Reset" value="Reset"/>
       </form>
     </div>
   );
