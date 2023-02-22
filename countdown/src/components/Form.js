@@ -22,6 +22,7 @@ export default function Form(props) {
   }, [date]);
 
   const startTimer = () => {
+    clearInterval(interval)
     const countDownDate = new Date(date).getTime();
     interval = setInterval(() => {
       const now = new Date().getTime();
@@ -54,6 +55,10 @@ export default function Form(props) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          setDays("");
+          setHours("");
+          setMinutes("");
+          setSeconds("");
         //   clearInterval(interval);
           setDate(inputDate + (inputTime === "" ? inputTime : "T" + inputTime) );
         }}
@@ -98,7 +103,7 @@ export default function Form(props) {
             }}
           />
 
-          <span>Time</span>
+          <span className="timer-time">Time</span>
           <input
           type="time"
           name="time"
