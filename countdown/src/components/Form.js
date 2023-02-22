@@ -10,6 +10,11 @@ export default function Form(props) {
   const [inputDate, setInputDate] = useState("January 1, 2023");
   const [date, setDate] = useState(inputDate);
   const [inputTime, setInputTime] = useState("");
+
+  const countDownDate = new Date(date).getTime()
+  const now = new Date().getTime()
+  const count = countDownDate - now
+
   let interval;
 
   useEffect(() => {
@@ -42,6 +47,7 @@ export default function Form(props) {
 
       if (count < 0) {
         clearInterval(interval);
+        alert("TIMES UP BABY")
       } else {
         setDays(timerDays);
         setHours(timerHours);
@@ -63,6 +69,7 @@ export default function Form(props) {
           setDate(inputDate + (inputTime === "" ? inputTime : "T" + inputTime) );
         }}
       >
+
         <div className="timer-class">
           <p>
             {days} <span className="timer-span">days</span>
@@ -77,6 +84,7 @@ export default function Form(props) {
             {seconds} <span className="timer-span">seconds</span>
           </p>
         </div>
+
         <div className="timer-event">
           <p>{date === "January 1, 2023" ? "" : `Until ${name}`}</p>
         </div>
@@ -117,9 +125,6 @@ export default function Form(props) {
         <input type="Submit" value="Submit" className="timer-submit" />
         <input type="Reset" value="Reset"/>
       </form>
-      {/* <div className="timer-card">
-
-      </div> */}
     </div>
   );
 }
