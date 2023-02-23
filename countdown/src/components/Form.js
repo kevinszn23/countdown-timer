@@ -133,6 +133,6 @@ export default function Form(props) {
       </form>
     </div>
   );
+} else {return <Alert/>
 }
-return <Alert/>
 }
