@@ -1,5 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
+// import { Alert } from "react-bootstrap"
+import Alert from "./Alert";
 
 export default function Form(props) {
   const [name, setName] = useState("");
@@ -7,13 +9,15 @@ export default function Form(props) {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  const [inputDate, setInputDate] = useState("January 1, 2023");
+  const [inputDate, setInputDate] = useState("");
   const [date, setDate] = useState(inputDate);
   const [inputTime, setInputTime] = useState("");
 
   const countDownDate = new Date(date).getTime()
   const now = new Date().getTime()
   const count = countDownDate - now
+
+//   let timerAlert = false;
 
   let interval;
 
@@ -46,8 +50,8 @@ export default function Form(props) {
       }
 
       if (count < 0) {
-        clearInterval(interval);
-        alert("TIMES UP BABY")
+        //   timerAlert = true;
+          clearInterval(interval);
       } else {
         setDays(timerDays);
         setHours(timerHours);
@@ -56,7 +60,9 @@ export default function Form(props) {
       }
     });
   };
-  return (
+
+  if (count > 0 || date === "") {
+    return (
     <div className="body">
       <form
         onSubmit={(e) => {
@@ -65,28 +71,28 @@ export default function Form(props) {
           setHours("");
           setMinutes("");
           setSeconds("");
-        //   clearInterval(interval);
-          setDate(inputDate + (inputTime === "" ? inputTime : "T" + inputTime) );
+
+          setDate(inputDate + (inputTime === "" ? inputTime : "T" + inputTime));
         }}
       >
-
         <div className="timer-class">
           <p>
-            {days} <span className="timer-span">days</span>
+            {days ? days : "0"} <span className="timer-span">days</span>
           </p>
           <p>
-            {hours} <span className="timer-span">hours</span>
+            {hours ? hours : "0"} <span className="timer-span">hours</span>
           </p>
           <p>
-            {minutes} <span className="timer-span">minutes</span>
+            {minutes ? minutes : "0"} <span className="timer-span">minutes</span>
           </p>
           <p>
-            {seconds} <span className="timer-span">seconds</span>
+            {seconds ? seconds : "0"} <span className="timer-span">seconds</span>
           </p>
         </div>
-
+  
+  
         <div className="timer-event">
-          <p>{date === "January 1, 2023" ? "" : `Until ${name}`}</p>
+          <p>{date === "" ? "" : `Until ${name}`}</p>
         </div>
         <label>
           <span className="timer-name">Name</span>
@@ -99,7 +105,7 @@ export default function Form(props) {
               setName(e.target.value);
             }}
           />
-
+  
           <span className="timer-date">Date</span>
           <input
             type="date"
@@ -110,7 +116,7 @@ export default function Form(props) {
               setInputDate(e.target.value);
             }}
           />
-
+  
           <span className="timer-time">Time</span>
           <input
           type="time"
@@ -120,11 +126,13 @@ export default function Form(props) {
             setInputTime(e.target.value);
           }}
           />
-
+  
         </label>
         <input type="Submit" value="Submit" className="timer-submit" />
         <input type="Reset" value="Reset"/>
       </form>
     </div>
   );
+}
+return <Alert/>
 }
